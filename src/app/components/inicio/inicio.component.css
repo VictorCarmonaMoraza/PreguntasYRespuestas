@@ -1,0 +1,9 @@
+.layout
+{
+  /* background-image: url(../../../assets/img/fondo.jpg); */
+  background: linear-gradient(rgba(0,0,0, 0.5),rgba(0,0,0, 0.5)),url(../../../assets/img/fondo.jpg);
+  /*para que ocupe toda la pantalla*/
+  background-size: cover;
+  /*Para que este centrada en el centro*/
+  background-position: center;
+}
