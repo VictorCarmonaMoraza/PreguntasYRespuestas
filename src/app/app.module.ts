@@ -8,6 +8,10 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.component';
 import { LoginComponent } from './components/inicio/login/login.component';
 import { RegisterComponent } from './components/inicio/register/register.component';
+import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
+import { CambiarPasswordComponent } from './components/inicio/dashboard/cambiar-password/cambiar-password.component';
+import { CuestionariosComponent } from './components/inicio/dashboard/cuestionarios/cuestionarios.component';
+import { NavbarComponent } from './components/inicio/dashboard/navbar/navbar.component';
 
 
 @NgModule({
@@ -17,6 +21,10 @@ import { RegisterComponent } from './components/inicio/register/register.compone
     BienvenidaComponent,
     LoginComponent,
     RegisterComponent,
+    DashboardComponent,
+    CambiarPasswordComponent,
+    CuestionariosComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
