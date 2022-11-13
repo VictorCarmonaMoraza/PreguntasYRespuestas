@@ -4,19 +4,28 @@
       <div class="card text-center" style="padding: 20px;">
         <h3>Registrarse</h3>
         <br>
-        <form [formGroup]="register">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Usuario">
+        <form [formGroup]="register" (ngSubmit)="registrarUsuario()">
+          <div class="form-group" style="text-align: start;">
+            <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario">
+            <span class="text-danger ml-2" *ngIf="register.get('usuario').hasError('required') && register.get('usuario').touched">
+              El usuario <strong>es requerido</strong>
+            </span>
+          </div>
+          <div class="form-group" style="text-align: start;">
+            <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+            <span class="text-danger ml-2" *ngIf="register.get('password').hasError('required') && register.get('usuario').touched">
+              La contraseña <strong>es requerida</strong>
+            </span>
+            <span class="text-danger ml-2" *ngIf="register.get('password').hasError('minlength') && register.get('usuario').touched">
+              La contraseña debe tener <strong>como minimo 4 caracteres</strong>
+            </span>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Contraseña">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Repetir Contraseña">
+            <input type="password" class="form-control" placeholder="Repetir Contraseña" formControlName="confirmPassword">
           </div>
 
           <div class="form-group">
-            <button class=" btn btn-primary mr-2 btn-reg">Aceptar</button>
+            <button class=" btn btn-primary mr-2 btn-reg" type="submit">Aceptar</button>
             <button class=" btn btn-secondary" routerLink="/login">Volver</button>
           </div>
         </form>
