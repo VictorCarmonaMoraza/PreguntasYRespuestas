@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
       usuario: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['']
-    });
+    }, { validator: this.checkPassword });
   }
 
   ngOnInit(): void {
@@ -23,6 +23,12 @@ export class RegisterComponent implements OnInit {
 
   registrarUsuario(): void {
     console.log(this.register);
+  }
+
+  checkPassword(group: FormGroup): any {
+    const pass = group.controls['password'].value;
+    const confirmPass = group.controls['confirmPassword'].value;
+    return pass === confirmPass ? null : { notSame: true };
   }
 
 }
