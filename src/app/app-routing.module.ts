@@ -4,15 +4,27 @@ import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.c
 import { RegisterComponent } from './components/inicio/register/register.component';
 import { LoginComponent } from './components/inicio/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
+import { CuestionariosComponent } from './components/inicio/dashboard/cuestionarios/cuestionarios.component';
+import { CambiarPasswordComponent } from './components/inicio/dashboard/cambiar-password/cambiar-password.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/inicio', pathMatch:'full'},
-  {path:'inicio', component:InicioComponent, children:[
-    { path: '', component: BienvenidaComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'login', component: LoginComponent },
-  ]},
-  { path: '**', redirectTo:'/bienvenidos', pathMatch:'full'},
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+  {
+    path: 'inicio', component: InicioComponent, children: [
+      { path: '', component: BienvenidaComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+    ]
+  },
+  {
+    path: 'dashboard', component: DashboardComponent, children: [
+      { path: '', component: CuestionariosComponent },
+      { path: 'cambiarPassword', component: CambiarPasswordComponent },
+      { path: 'cambiarPassword', component: CambiarPasswordComponent },
+    ]
+  },
+  { path: '**', redirectTo: '/inicio', pathMatch: 'full' },
 ];
 
 @NgModule({
