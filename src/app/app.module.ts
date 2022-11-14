@@ -14,6 +14,7 @@ import { CuestionariosComponent } from './components/inicio/dashboard/cuestionar
 import { NavbarComponent } from './components/inicio/dashboard/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     CambiarPasswordComponent,
     CuestionariosComponent,
     NavbarComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

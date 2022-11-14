@@ -10,7 +10,7 @@ import { Usuario } from '../../../models/usuario';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loading=false;
 
   login: FormGroup;
 
@@ -36,13 +36,18 @@ export class LoginComponent implements OnInit {
       nombreUsuario: this.login.value.usuario,
       password: this.login.value.password
     }
-    if (usuario.nombreUsuario === 'victor' && usuario.password === '1234') {
-      this.login.reset();
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.toastr.error('Usuario o contraseña incorrecto', 'Error');
-      this.login.reset();
-    }
+    this.loading = true;
+    setTimeout(() => {
+      if (usuario.nombreUsuario === 'victor' && usuario.password === '1234') {
+        this.login.reset();
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.toastr.error('Usuario o contraseña incorrecto', 'Error');
+        this.login.reset();
+      }
+      this.loading = false;
+    }, 3000)
+
     console.log(usuario);
   }
 
