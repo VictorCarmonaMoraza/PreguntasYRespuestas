@@ -13,7 +13,7 @@ cambiarPassword:FormGroup
   constructor(private fb:FormBuilder) {
     this.cambiarPassword=this.fb.group({
       passwordAnterior:['',Validators.required],
-      nuevaPassword:['',[Validators.required],Validators.minLength(4)],
+      nuevaPassword:['',[Validators.required,Validators.minLength(4)]],
       confirmPassword:['']
     },{validator:this.checkPassword});
    }
@@ -22,7 +22,7 @@ cambiarPassword:FormGroup
   }
 
   checkPassword(group: FormGroup): any {
-    const pass = group.controls['passwordAnterior'].value;
+    const pass = group.controls['nuevaPassword'].value;
     const confirmPass = group.controls['confirmPassword'].value;
     return pass === confirmPass ? null : { notSame: true };
   }
