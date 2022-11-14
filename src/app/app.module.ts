@@ -12,6 +12,8 @@ import { DashboardComponent } from './components/inicio/dashboard/dashboard.comp
 import { CambiarPasswordComponent } from './components/inicio/dashboard/cambiar-password/cambiar-password.component';
 import { CuestionariosComponent } from './components/inicio/dashboard/cuestionarios/cuestionarios.component';
 import { NavbarComponent } from './components/inicio/dashboard/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { NavbarComponent } from './components/inicio/dashboard/navbar/navbar.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
