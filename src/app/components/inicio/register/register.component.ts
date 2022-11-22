@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +13,13 @@ import { UsuarioService } from '../../../services/usuario.service';
 export class RegisterComponent implements OnInit {
 
   register: FormGroup;
+  loading = false;
 
   constructor(
     private fb: FormBuilder,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.register = this.fb.group({
       usuario: ['', Validators.required],
@@ -34,11 +39,29 @@ export class RegisterComponent implements OnInit {
       password: this.register.value.password
     }
 
+    //Cargamos el loading
+    this.loading = true;
+
     //LLamada al servicio
     this.usuarioService.saveUser(usuario)
-    .subscribe(data=>{
-      console.log(data);
-    })
+      .subscribe(data => {
+        console.log(data);
+        this.toastr.success('El usuario ' + usuario.nombreUsuario + ' fue registrado con exito!', 'Usuario Registrado');
+        //Redirigimos a la pagina de login
+        this.router.navigate(['/inicio/login']);
+        //Paramos el loading
+        this.loading = false;
+      }, error => {
+        //Paramos el loading
+        this.loading = false;
+        //Imprimo el error
+        console.log(error);
+        //Mostramos el mensaje en el toast
+        this.toastr.error(error.error.message, 'Error!');
+        //Reseteamos el formulario
+        this.register.reset();
+      });
+
   }
 
   checkPassword(group: FormGroup): any {
