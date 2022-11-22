@@ -20,4 +20,19 @@ export class LoginService {
   public login(usuario: Usuario): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, usuario);
   }
+
+  //Guardamos el nombre del usaurio
+  setLocalStorage(data:string):void{
+    localStorage.setItem('nombreUsuario', data);
+  }
+
+  //Obtenemos el nombre del usuario
+  getNombreUsuario():string{
+    return localStorage.getItem('nombreUsuario');
+  }
+
+  //Borrar LocalStorage
+  removeLocalStorage():void{
+    localStorage.removeItem('nombreUsuario');
+  }
 }

@@ -42,10 +42,21 @@ export class LoginComponent implements OnInit {
     this.loginService.login(usuario)
       .subscribe(data => {
         console.log(data);
+        //Paramos el loading
         this.loading = false;
+        //Guardamos en el localStorage el nombre del usuario
+        this.loginService.setLocalStorage(data.usuario);
+        //Retornamos hacia el dashboar porque todo fue bien
+        this.router.navigate(['/dashboard']);
       }, error => {
+        //Imprimos el error
         console.log(error);
+        //Paramos el loading
         this.loading = false;
+        //Mostramos el mesnaje de error
+        this.toastr.error(error.error.message, 'Error');
+        //Reseteamos el formulario
+        this.login.reset();
       })
     // setTimeout(() => {
     //   if (usuario.nombreUsuario === 'victor' && usuario.password === '1234') {
