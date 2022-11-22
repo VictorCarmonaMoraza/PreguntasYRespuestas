@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,10 @@ export class UsuarioService {
     this.myApiUrl = '/api/Usuario'
   }
 
+  //http://localhost:5000/api/Usuario -- POST
   //Guardamos un usuario
-  saveUser(usuario: Usuario): void {
+  saveUser(usuario: Usuario):Observable<any> {
 
+    return this.http.post(this.myAppUrl + this.myApiUrl,usuario);
   }
 }
