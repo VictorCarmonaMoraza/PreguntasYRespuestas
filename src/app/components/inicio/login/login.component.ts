@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         //Paramos el loading
         this.loading = false;
         //Guardamos en el localStorage el nombre del usuario
-        this.loginService.setLocalStorage(data.usuario);
+        this.loginService.setLocalStorage(data.token);
         //Retornamos hacia el dashboar porque todo fue bien
         this.router.navigate(['/dashboard']);
       }, error => {
