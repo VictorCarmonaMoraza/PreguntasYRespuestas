@@ -1,5 +1,8 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UsuarioService } from '../../../../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cambiar-password',
@@ -8,15 +11,21 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CambiarPasswordComponent implements OnInit {
 
-cambiarPassword:FormGroup
+  public cambiarPassword: FormGroup;
+  public loading: boolean = false;
 
-  constructor(private fb:FormBuilder) {
-    this.cambiarPassword=this.fb.group({
-      passwordAnterior:['',Validators.required],
-      nuevaPassword:['',[Validators.required,Validators.minLength(4)]],
-      confirmPassword:['']
-    },{validator:this.checkPassword});
-   }
+  constructor(
+    private fb: FormBuilder,
+    private usuarioService: UsuarioService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
+    this.cambiarPassword = this.fb.group({
+      passwordAnterior: ['', Validators.required],
+      nuevaPassword: ['', [Validators.required, Validators.minLength(4)]],
+      confirmPassword: ['']
+    }, { validator: this.checkPassword });
+  }
 
   ngOnInit(): void {
   }
@@ -27,8 +36,14 @@ cambiarPassword:FormGroup
     return pass === confirmPass ? null : { notSame: true };
   }
 
-  guardarPassword(){
+  guardarPassword() {
     console.log(this.cambiarPassword);
+
+    const changedPassword: any = {
+      passwordAnterior: this.cambiarPassword.value.passwordAnterior,
+      nuevaPassword: this.cambiarPassword.value.nuevaPassword
+    };
+    console.log(changedPassword);
   }
 
 }
