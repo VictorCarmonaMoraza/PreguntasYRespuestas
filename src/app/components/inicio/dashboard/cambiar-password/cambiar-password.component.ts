@@ -44,6 +44,17 @@ export class CambiarPasswordComponent implements OnInit {
       nuevaPassword: this.cambiarPassword.value.nuevaPassword
     };
     console.log(changedPassword);
+    this.loading = true;
+    this.usuarioService.changePassword(changedPassword)
+    .subscribe(data=>{
+      this.toastr.info(data.message);
+      this.router.navigate(['/dashboard']);
+    }, error=>{
+      this.loading = false;
+      //Reseteamos el formulario
+      this.cambiarPassword.reset();
+      this.toastr.error(error.error.message,'Error!');
+    })
   }
 
 }
