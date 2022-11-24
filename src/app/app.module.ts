@@ -15,7 +15,10 @@ import { NavbarComponent } from './components/inicio/dashboard/navbar/navbar.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './shared/loading/loading.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+
+//Interceptors
+import { AddTokenInterceptor } from './helpers/add-token.interceptor';
 
 
 @NgModule({
@@ -39,7 +42,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
