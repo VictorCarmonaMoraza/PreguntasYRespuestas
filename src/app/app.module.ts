@@ -16,9 +16,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './shared/loading/loading.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { NuevoCuestionarioComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/nuevo-cuestionario.component';
 
 //Interceptors
 import { AddTokenInterceptor } from './helpers/add-token.interceptor';
+import { PasoUnoComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
+import { PasoDosComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
+import { NuevaPreguntaComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/nueva-pregunta/nueva-pregunta.component';
+
 
 
 @NgModule({
@@ -33,6 +38,10 @@ import { AddTokenInterceptor } from './helpers/add-token.interceptor';
     CuestionariosComponent,
     NavbarComponent,
     LoadingComponent,
+    NuevoCuestionarioComponent,
+    PasoUnoComponent,
+    PasoDosComponent,
+    NuevaPreguntaComponent,
   ],
   imports: [
     BrowserModule,
