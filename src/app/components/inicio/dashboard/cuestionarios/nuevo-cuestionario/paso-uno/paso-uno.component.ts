@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CuestionarioService } from '../../../../../../services/cuestionario.service';
 
 @Component({
   selector: 'app-paso-uno',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasoUnoComponent implements OnInit {
 
-  constructor() { }
+  datosCuestionario: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cuestionarioService: CuestionarioService) {
+    this.datosCuestionario = this.fb.group({
+      titulo: ['', Validators.required],
+      descripcion: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
   }
