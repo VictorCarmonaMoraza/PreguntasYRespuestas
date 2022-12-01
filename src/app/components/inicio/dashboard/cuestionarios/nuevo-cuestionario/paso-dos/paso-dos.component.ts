@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CuestionarioService } from '../../../../../../services/cuestionario.service';
 
 @Component({
   selector: 'app-paso-dos',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./paso-dos.component.css']
 })
 export class PasoDosComponent implements OnInit {
+  public tituloCuestionario: string;
+  public decsripcionCuestionario: string;
 
-  constructor() { }
+  constructor(private cuestionarioService: CuestionarioService) { }
 
   ngOnInit(): void {
+    this.tituloCuestionario = this.cuestionarioService.tituloCuestionario;
+    this.decsripcionCuestionario = this.cuestionarioService.descripcionCuestionario;
   }
 
 }

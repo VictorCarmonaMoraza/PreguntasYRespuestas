@@ -11,6 +11,8 @@ export class CuestionarioService {
 
   public myAppUrl: string;
   public myApiUrl: string;
+  public tituloCuestionario:string;
+  public descripcionCuestionario:string;
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
