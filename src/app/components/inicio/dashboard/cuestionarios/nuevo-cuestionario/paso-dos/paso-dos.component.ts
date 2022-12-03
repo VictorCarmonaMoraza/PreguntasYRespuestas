@@ -29,4 +29,9 @@ export class PasoDosComponent implements OnInit {
     console.log(this.listPreguntas);
   }
 
+  eliminarPregunta(index:number):void{
+    //Eliminamos del listado mediante el indice la pregunta
+    this.listPreguntas.splice(index,1);
+  }
+
 }
