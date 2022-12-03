@@ -67,9 +67,13 @@ export class NuevaPreguntaComponent implements OnInit {
     //Creamos un array de respuestas
     const arrayRta: Respuesta[] = [];
 
+
     //Iteramos el array de respuestas
-    arrayRespuestas.forEach(element => {
+    arrayRespuestas.forEach((element,index) => {
       const respuesta: Respuesta = new Respuesta(element.descripcion, false);
+      if(index===element.esCorrecta){
+        respuesta.esCorrecta =true;
+      }
 
       //Insertamos dentro del array de respuestas la respuesta
       arrayRta.push(respuesta);
@@ -78,5 +82,13 @@ export class NuevaPreguntaComponent implements OnInit {
     const pregunta:Pregunta=new Pregunta(descripcionPregunta,arrayRta);
 
     console.log(pregunta);
+    this.reset();
+  }
+
+  //Reseteamos el formulario
+  reset():void{
+    this.nuevaPregunta.reset();
+    this.getRespuestas.clear();
+    this.agregarRespuestasPorDefecto();
   }
 }
