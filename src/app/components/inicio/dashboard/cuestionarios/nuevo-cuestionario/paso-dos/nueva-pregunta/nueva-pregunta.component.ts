@@ -51,4 +51,8 @@ export class NuevaPreguntaComponent implements OnInit {
       this.getRespuestas.removeAt(index);
     }
   }
+
+  setRespuestaValida(index: number): void {
+    this.rtaCorrecta = index;
+  }
 }
