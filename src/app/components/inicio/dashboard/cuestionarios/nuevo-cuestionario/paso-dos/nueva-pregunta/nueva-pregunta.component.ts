@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Pregunta } from 'src/app/models/pregunta';
 import { ToastrService } from 'ngx-toastr';
+import { Respuesta } from '../../../../../../../models/respuesta';
 
 @Component({
   selector: 'app-nueva-pregunta',
@@ -54,5 +55,28 @@ export class NuevaPreguntaComponent implements OnInit {
 
   setRespuestaValida(index: number): void {
     this.rtaCorrecta = index;
+  }
+
+  agregarPregunta(): void {
+    //Obtener titulo de la pregunta
+    const descripcionPregunta = this.nuevaPregunta.get('titulo').value;
+
+    //Obtener array de respuestas
+    const arrayRespuestas = this.nuevaPregunta.get('respuestas').value;
+
+    //Creamos un array de respuestas
+    const arrayRta: Respuesta[] = [];
+
+    //Iteramos el array de respuestas
+    arrayRespuestas.forEach(element => {
+      const respuesta: Respuesta = new Respuesta(element.descripcion, false);
+
+      //Insertamos dentro del array de respuestas la respuesta
+      arrayRta.push(respuesta);
+    });
+
+    const pregunta:Pregunta=new Pregunta(descripcionPregunta,arrayRta);
+
+    console.log(pregunta);
   }
 }
