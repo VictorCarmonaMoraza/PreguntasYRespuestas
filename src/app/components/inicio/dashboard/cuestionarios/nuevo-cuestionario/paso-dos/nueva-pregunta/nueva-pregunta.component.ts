@@ -73,7 +73,7 @@ export class NuevaPreguntaComponent implements OnInit {
     //Iteramos el array de respuestas
     arrayRespuestas.forEach((element,index) => {
       const respuesta: Respuesta = new Respuesta(element.descripcion, false);
-      if(index===element.esCorrecta){
+      if(index===this.rtaCorrecta){
         respuesta.esCorrecta =true;
       }
 
@@ -90,6 +90,7 @@ export class NuevaPreguntaComponent implements OnInit {
 
   //Reseteamos el formulario
   reset():void{
+    this.rtaCorrecta = 0;
     this.nuevaPregunta.reset();
     this.getRespuestas.clear();
     this.agregarRespuestasPorDefecto();
