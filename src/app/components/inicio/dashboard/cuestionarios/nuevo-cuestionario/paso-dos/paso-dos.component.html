@@ -12,7 +12,7 @@
         </div>
 
         <div style="width: 30%;">
-          <button class="btn btn-primary btn-sm ml-1 mt-1">
+          <button class="btn btn-primary btn-sm ml-1 mt-1" (click)="pregunta.hide =!pregunta.hide">
             Mostrar
           </button>
 
@@ -22,6 +22,19 @@
 
         </div>
       </div>
+
+      <div class="card-body" [hidden]="pregunta.hide">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let respuesta of pregunta.listRespuestas"
+            [ngClass]="{'list-group-item-success':respuesta.esCorrecta ==true}">
+            {{respuesta.descripcion}}
+            <span class="material-symbols-outlined" *ngIf="respuesta.esCorrecta == true">
+              Task_Alt
+            </span>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
     <div *ngIf="listPreguntas.length==0">
