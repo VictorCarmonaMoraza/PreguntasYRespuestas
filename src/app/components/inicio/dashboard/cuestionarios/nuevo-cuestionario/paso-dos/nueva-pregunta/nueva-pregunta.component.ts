@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Pregunta } from 'src/app/models/pregunta';
 import { ToastrService } from 'ngx-toastr';
@@ -14,6 +14,8 @@ export class NuevaPreguntaComponent implements OnInit {
   public nuevaPregunta: FormGroup;
   pregunta: Pregunta;
   rtaCorrecta = 0;
+
+  @Output() enviarPregunta =new EventEmitter<Pregunta>();
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService) {
@@ -82,6 +84,7 @@ export class NuevaPreguntaComponent implements OnInit {
     const pregunta:Pregunta=new Pregunta(descripcionPregunta,arrayRta);
 
     console.log(pregunta);
+    this.enviarPregunta.emit(pregunta);
     this.reset();
   }
 

@@ -13,15 +13,20 @@ export class PasoDosComponent implements OnInit {
   public tituloCuestionario: string;
   public decsripcionCuestionario: string;
 
-  listPreguntas:Pregunta[]=[];
+  listPreguntas: Pregunta[] = [];
 
   constructor(private cuestionarioService: CuestionarioService,
-    private toastr:ToastrService,
-    private router:Router) { }
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.tituloCuestionario = this.cuestionarioService.tituloCuestionario;
     this.decsripcionCuestionario = this.cuestionarioService.descripcionCuestionario;
+  }
+
+  guardarPregunta(pregunta: Pregunta): void {
+    this.listPreguntas.push(pregunta);
+    console.log(this.listPreguntas);
   }
 
 }
