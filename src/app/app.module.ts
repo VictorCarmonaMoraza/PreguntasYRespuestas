@@ -23,6 +23,11 @@ import { AddTokenInterceptor } from './helpers/add-token.interceptor';
 import { PasoUnoComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
 import { PasoDosComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
 import { NuevaPreguntaComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/nueva-pregunta/nueva-pregunta.component';
+import { CuestionarioComponent } from './components/inicio/dashboard/cuestionarios/cuestionario/cuestionario.component';
+import { ListCuestionariosComponent } from './components/inicio/list-cuestionarios/list-cuestionarios.component';
+import { IngresarNombreComponent } from './components/inicio/list-cuestionarios/ingresar-nombre/ingresar-nombre.component';
+import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregunta/pregunta.component';
+import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
 
 
 
@@ -42,6 +47,11 @@ import { NuevaPreguntaComponent } from './components/inicio/dashboard/cuestionar
     PasoUnoComponent,
     PasoDosComponent,
     NuevaPreguntaComponent,
+    CuestionarioComponent,
+    ListCuestionariosComponent,
+    IngresarNombreComponent,
+    PreguntaComponent,
+    RespuestaCuestionarioComponent,
   ],
   imports: [
     BrowserModule,
