@@ -19,11 +19,18 @@ export class CuestionarioService {
     this.myApiUrl = '/api/Cuestionario/';
   }
 
+  //Guarda los cuestionarios
   guardarCuestionario(cuestionario: Cuestionario): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, cuestionario);
   }
 
+  //Obtiene los cuestionarios del usuario
   getListCuestionario():Observable<any>{
     return this.http.get(this.myAppUrl+this.myApiUrl+'GetListCuestionarioByUser');
+  }
+
+  //Borramos un cuestionario por su id
+  deleteCuestionario(idCuestionario:number):Observable<any>{
+    return this.http.delete(this.myAppUrl+this.myApiUrl+idCuestionario);
   }
 }
