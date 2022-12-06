@@ -17,6 +17,9 @@ export class IngresarNombreComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.respuestaCuestionarioService.idCuestionario == null){
+      this.router.navigate(['/inicio']);
+    }
   }
 
   siguiente(): void {

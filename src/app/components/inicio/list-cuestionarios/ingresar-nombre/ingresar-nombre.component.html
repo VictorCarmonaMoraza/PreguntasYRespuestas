@@ -8,7 +8,7 @@
       <button class="btn btn-primary btn-lg" routerLink="/inicio/listCuestionarios">
         Volver
       </button>
-      <button class="btn btn-primary btn-lg btn-sig" (click)="siguiente()">
+      <button class="btn btn-primary btn-lg btn-sig" (click)="siguiente()" [disabled]="nombreParticipante==''">
         Siguiente
       </button>
     </div>
