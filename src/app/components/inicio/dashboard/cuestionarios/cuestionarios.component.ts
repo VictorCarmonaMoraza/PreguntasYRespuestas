@@ -13,6 +13,7 @@ export class CuestionariosComponent implements OnInit {
 
   public nombreUsuario:string;
   public listCuestionarios:Cuestionario[]=[];
+  public loading:boolean = false;
 
   constructor(
     private loginService:LoginService,
@@ -30,12 +31,15 @@ export class CuestionariosComponent implements OnInit {
   }
 
   getCuestionarios():void{
+    this.loading = true;
     this.cuestionarioService.getListCuestionario()
     .subscribe(data=>{
       console.log(data);
       this.listCuestionarios = data;
+      this.loading =false;
     }, error=>{
       console.log(error);
+      this.loading = false;
     })
   }
 }
