@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cuestionario } from 'src/app/models/cuestionario';
 import { CuestionarioService } from '../../../services/cuestionario.service';
+import { Router } from '@angular/router';
+import { RespuestaCuestionarioService } from '../../../services/respuesta-cuestionario.service';
 
 @Component({
   selector: 'app-list-cuestionarios',
@@ -9,11 +11,13 @@ import { CuestionarioService } from '../../../services/cuestionario.service';
 })
 export class ListCuestionariosComponent implements OnInit {
 
-  public loading :boolean =false;
-  listCuestionarios:any[] =[];
+  public loading: boolean = false;
+  listCuestionarios: any[] = [];
 
   constructor(
-    private cuestionarioService: CuestionarioService
+    private cuestionarioService: CuestionarioService,
+    private router:Router,
+    private respuestaCuestionarioService:RespuestaCuestionarioService
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +34,12 @@ export class ListCuestionariosComponent implements OnInit {
         this.loading = false;
         this.listCuestionarios = data;
       })
-    }
   }
+
+  ingresarNombre(idCuestionario:number):void{
+    //LLamamos al servicio
+    this.respuestaCuestionarioService.idCuestionario = idCuestionario;
+    //Redireccionamos
+    this.router.navigate(['/inicio/ingresarNombre']);
+  }
+}

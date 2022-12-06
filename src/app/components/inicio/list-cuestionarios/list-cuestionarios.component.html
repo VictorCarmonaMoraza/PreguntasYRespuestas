@@ -20,7 +20,7 @@
             <div style="font-size: 13px;">
               <strong>Fecha Creacion: </strong>{{cuestionario.fechaCreacion | date:"dd/MM/yy"}}
             </div>
-            <button class="btn btn-sucess btn-ing" style="margin-bottom: 20px;">INGRESAR</button>
+            <button class="btn btn-sucess btn-ing" style="margin-bottom: 20px;" (click)="ingresarNombre(cuestionario.id)">INGRESAR</button>
           </div>
         </div>
       </div>
