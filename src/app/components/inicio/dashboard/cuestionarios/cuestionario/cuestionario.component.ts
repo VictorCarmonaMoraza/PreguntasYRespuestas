@@ -10,6 +10,8 @@ import { CuestionarioService } from '../../../../../services/cuestionario.servic
 export class CuestionarioComponent implements OnInit {
 
   public idCuestionario:number;
+  public loading:boolean = false;
+  public cuestionario:any ={};
 
   constructor(
     private cuestionarioService:CuestionarioService,
@@ -22,9 +24,13 @@ export class CuestionarioComponent implements OnInit {
     this.getCuestionario();
   }
 
+  //Obtenemos la informacion del cuestionario rescatando de la url el id del cuestionario
   getCuestionario():void{
+    this.loading = true;
     this.cuestionarioService.getCuestionario(this.idCuestionario)
     .subscribe(data=>{
+      this.loading =false;
+      this.cuestionario = data;
       console.log(data);
     })
   }
