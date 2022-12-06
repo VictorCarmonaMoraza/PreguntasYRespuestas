@@ -12,5 +12,21 @@
     <div class="card-header">
       <b>{{pregunta.descripcion}}</b>
     </div>
+    <ul class="list-group" *ngFor="let respuesta of pregunta.listRespuestas">
+      <!--Aplica la fila verde cuando la respuesta es Correcta-->
+      <li class="list-group-item" [ngClass]="{'list-group-item-success':respuesta.esCorrecta}">
+        {{respuesta.descripcion}}
+        <span class="material-symbols-outlined" *ngIf="respuesta.esCorrecta">Task_Alt</span>
+      </li>
+    </ul>
+    <br>
   </div>
+
+  <!--Button-->
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4">
+    <button class="btn btn-info btn-lg btn-block" routerLink="/dashboard"> Volver </button>
+    </div>
+  </div>
+  <br>
 </div>
