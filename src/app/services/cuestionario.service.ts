@@ -11,8 +11,8 @@ export class CuestionarioService {
 
   public myAppUrl: string;
   public myApiUrl: string;
-  public tituloCuestionario:string;
-  public descripcionCuestionario:string;
+  public tituloCuestionario: string;
+  public descripcionCuestionario: string;
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
@@ -25,17 +25,21 @@ export class CuestionarioService {
   }
 
   //Obtiene los cuestionarios del usuario
-  getListCuestionario():Observable<any>{
-    return this.http.get(this.myAppUrl+this.myApiUrl+'GetListCuestionarioByUser');
+  getListCuestionarioByUser(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListCuestionarioByUser');
   }
 
   //Borramos un cuestionario por su id
-  deleteCuestionario(idCuestionario:number):Observable<any>{
-    return this.http.delete(this.myAppUrl+this.myApiUrl+idCuestionario);
+  deleteCuestionario(idCuestionario: number): Observable<any> {
+    return this.http.delete(this.myAppUrl + this.myApiUrl + idCuestionario);
   }
 
   //Obtenemos el cuestionario por su id
-  getCuestionario(idCuestionario:number):Observable<any>{
-    return this.http.get(this.myAppUrl+this.myApiUrl+idCuestionario);
+  getCuestionario(idCuestionario: number): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + idCuestionario);
+  }
+
+  getListCuestionarios(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListCuestionarios');
   }
 }

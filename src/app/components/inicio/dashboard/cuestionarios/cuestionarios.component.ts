@@ -32,7 +32,7 @@ export class CuestionariosComponent implements OnInit {
 
   getCuestionarios(): void {
     this.loading = true;
-    this.cuestionarioService.getListCuestionario()
+    this.cuestionarioService.getListCuestionarioByUser()
       .subscribe(data => {
         console.log(data);
         this.listCuestionarios = data;
