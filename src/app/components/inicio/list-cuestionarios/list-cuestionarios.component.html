@@ -3,6 +3,32 @@
     <div class="card text-center" style="width: 100%;">
       <br>
       <h3>Bienvenidos!</h3>
+      <app-loading *ngIf="loading" style="padding-bottom: 10px;"></app-loading>
+      <!--Mostramos el spinner cuando tenemos datos y el loading esta a false lo que significa que ya tiene datos de la BBDD-->
+      <h4 *ngIf="listCuestionarios.length == 0 && loading == false">No hay cuestionarios para mostrar</h4>
+      <div class="card-columns" style="padding: 10px;">
+        <div class="card bg-light" *ngFor="let cuestionario of listCuestionarios">
+          <div class="card-body text-center">
+            <h4 class="card-title"> {{cuestionario.nombre}}</h4>
+            <p class="card-text"> {{cuestionario.descripcion}}</p>
+            <div style="font-size: 13px;">
+              <strong>
+                Creador:
+              </strong>{{cuestionario.usuario.nombreUsuario}}
+            </div>
+
+            <div style="font-size: 13px;">
+              <strong>Fecha Creacion: </strong>{{cuestionario.fechaCreacion | date:"dd/MM/yy"}}
+            </div>
+            <button class="btn btn-sucess btn-ing" style="margin-bottom: 20px;">INGRESAR</button>
+          </div>
+        </div>
+      </div>
+
+      <!--Boton-->
+      <div class="mt-auto">
+        <button class="btn btn-secondary btn-lg" style="margin-bottom:20px ;" routerLink="/inicio"> volver</button>
+      </div>
     </div>
   </div>
 </div>

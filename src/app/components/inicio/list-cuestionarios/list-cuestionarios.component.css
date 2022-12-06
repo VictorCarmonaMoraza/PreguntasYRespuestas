@@ -4,3 +4,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-ing
+{
+  margin-top: 8px;
+  background-color: #F05F44;
+  border-color:#F05F44;
+  color: white;
+  }
+
+  .row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

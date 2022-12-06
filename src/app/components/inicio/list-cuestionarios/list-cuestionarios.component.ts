@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cuestionario } from 'src/app/models/cuestionario';
 import { CuestionarioService } from '../../../services/cuestionario.service';
 
 @Component({
@@ -7,6 +8,9 @@ import { CuestionarioService } from '../../../services/cuestionario.service';
   styleUrls: ['./list-cuestionarios.component.css']
 })
 export class ListCuestionariosComponent implements OnInit {
+
+  public loading :boolean =false;
+  listCuestionarios:any[] =[];
 
   constructor(
     private cuestionarioService: CuestionarioService
@@ -19,9 +23,12 @@ export class ListCuestionariosComponent implements OnInit {
 
   //Retornamos todos los cuestionarios
   getListCuestionarios(): void {
+    this.loading = true;
     this.cuestionarioService.getListCuestionarios()
       .subscribe(data => {
         console.log(data);
+        this.loading = false;
+        this.listCuestionarios = data;
       })
     }
   }
