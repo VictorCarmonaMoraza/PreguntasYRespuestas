@@ -12,19 +12,21 @@ import { Pregunta } from '../../../../models/pregunta';
 export class PreguntaComponent implements OnInit {
 
   public idCuestionario: number;
-  public listPreguntas:Pregunta[] = [];
-  public loading:boolean = false;
-  public rtaConfirmada:boolean=false;
+  public listPreguntas: Pregunta[] = [];
+  public loading: boolean = false;
+  public rtaConfirmada: boolean = false;
+  public opcionSeleccionada: any;
+  public index: number = 0;
 
   constructor(
     private respuestaCuestionarioService: RespuestaCuestionarioService,
     private cuestionarioService: CuestionarioService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.idCuestionario = this.respuestaCuestionarioService.idCuestionario;
-    if(this.idCuestionario == null){
+    if (this.idCuestionario == null) {
       this.router.navigate(['/inicio']);
       return;
     }
@@ -38,14 +40,31 @@ export class PreguntaComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.listPreguntas = data.listPreguntas;
-        this.loading =false;
+        this.loading = false;
       });
   }
 
-  obtenerPregunta():string{
-    return this.listPreguntas[0].descripcion;
+  obtenerPregunta(): string {
+    return this.listPreguntas[this.index].descripcion;
   }
-  getIndex():number{
-    return 0;
+  getIndex(): number {
+    return this.index;
   }
+
+  respuestaSeleccionada(respuesta: any): void {
+    this.opcionSeleccionada = respuesta;
+    this.rtaConfirmada = true;
+  }
+
+  AddClassOption(respuesta: any): string {
+    if (respuesta == this.opcionSeleccionada) {
+      return 'active text-light';
+    }
+  }
+
+  siguiente(): void {
+    this.rtaConfirmada = false;
+    this.index++;
+  }
+
 }
