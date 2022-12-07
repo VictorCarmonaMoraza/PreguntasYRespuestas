@@ -13,6 +13,8 @@ export class PreguntaComponent implements OnInit {
 
   public idCuestionario: number;
   public listPreguntas:Pregunta[] = [];
+  public loading:boolean = false;
+  public rtaConfirmada:boolean=false;
 
   constructor(
     private respuestaCuestionarioService: RespuestaCuestionarioService,
@@ -31,10 +33,12 @@ export class PreguntaComponent implements OnInit {
 
   //Obtenemos el cuestionario por su id
   getCuestionario(): void {
+    this.loading = true;
     this.cuestionarioService.getCuestionario(this.idCuestionario)
       .subscribe(data => {
         console.log(data);
         this.listPreguntas = data.listPreguntas;
+        this.loading =false;
       });
   }
 
