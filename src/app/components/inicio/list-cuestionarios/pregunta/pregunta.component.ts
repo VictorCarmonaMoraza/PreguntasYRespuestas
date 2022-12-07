@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RespuestaCuestionarioService } from '../../../../services/respuesta-cuestionario.service';
 import { CuestionarioService } from '../../../../services/cuestionario.service';
 import { Router } from '@angular/router';
+import { Pregunta } from '../../../../models/pregunta';
 
 @Component({
   selector: 'app-pregunta',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class PreguntaComponent implements OnInit {
 
   public idCuestionario: number;
+  public listPreguntas:Pregunta[] = [];
 
   constructor(
     private respuestaCuestionarioService: RespuestaCuestionarioService,
@@ -20,13 +22,10 @@ export class PreguntaComponent implements OnInit {
 
   ngOnInit(): void {
     this.idCuestionario = this.respuestaCuestionarioService.idCuestionario;
-    //Cuando refrescamos la pagina se pierde el idCuestionario por lo cual para solucionarlo
-    //comprobamos y si no tiene valor redirigimos
     if(this.idCuestionario == null){
       this.router.navigate(['/inicio']);
       return;
     }
-    //console.log(this.respuestaCuestionarioService.idCuestionario);
     this.getCuestionario();
   }
 
@@ -35,7 +34,14 @@ export class PreguntaComponent implements OnInit {
     this.cuestionarioService.getCuestionario(this.idCuestionario)
       .subscribe(data => {
         console.log(data);
+        this.listPreguntas = data.listPreguntas;
       });
   }
 
+  obtenerPregunta():string{
+    return this.listPreguntas[0].descripcion;
+  }
+  getIndex():number{
+    return 0;
+  }
 }
