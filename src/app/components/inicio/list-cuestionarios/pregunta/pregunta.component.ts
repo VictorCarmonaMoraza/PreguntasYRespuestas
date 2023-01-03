@@ -17,6 +17,7 @@ export class PreguntaComponent implements OnInit {
   public rtaConfirmada: boolean = false;
   public opcionSeleccionada: any;
   public index: number = 0;
+  public idRespuestaSeleccionada: number;
 
   constructor(
     private respuestaCuestionarioService: RespuestaCuestionarioService,
@@ -31,6 +32,8 @@ export class PreguntaComponent implements OnInit {
       return;
     }
     this.getCuestionario();
+    //Cuando entramos el array de respuestas debe estar vacio
+    this.respuestaCuestionarioService.respuestas = [];
   }
 
   //Obtenemos el cuestionario por su id
@@ -41,6 +44,7 @@ export class PreguntaComponent implements OnInit {
         console.log(data);
         this.listPreguntas = data.listPreguntas;
         this.loading = false;
+        this.respuestaCuestionarioService.cuestionario = data;
       });
   }
 
@@ -51,9 +55,10 @@ export class PreguntaComponent implements OnInit {
     return this.index;
   }
 
-  respuestaSeleccionada(respuesta: any): void {
+  respuestaSeleccionada(respuesta: any, idRespuesta: number): void {
     this.opcionSeleccionada = respuesta;
     this.rtaConfirmada = true;
+    this.idRespuestaSeleccionada = idRespuesta;
   }
 
   AddClassOption(respuesta: any): string {
@@ -63,10 +68,13 @@ export class PreguntaComponent implements OnInit {
   }
 
   siguiente(): void {
+    this.respuestaCuestionarioService.respuestas.push(this.idRespuestaSeleccionada);
+    console.log(this.respuestaCuestionarioService.respuestas);
     this.rtaConfirmada = false;
     this.index++;
+    this.idRespuestaSeleccionada = null;
 
-    if(this.index === this.listPreguntas.length){
+    if (this.index === this.listPreguntas.length) {
       this.router.navigate(['/inicio/respuestaCuestionario']);
     }
   }
