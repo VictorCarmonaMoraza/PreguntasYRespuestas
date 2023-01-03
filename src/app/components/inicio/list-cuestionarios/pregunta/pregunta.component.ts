@@ -65,6 +65,10 @@ export class PreguntaComponent implements OnInit {
   siguiente(): void {
     this.rtaConfirmada = false;
     this.index++;
+
+    if(this.index === this.listPreguntas.length){
+      this.router.navigate(['/inicio/respuestaCuestionario']);
+    }
   }
 
 }
