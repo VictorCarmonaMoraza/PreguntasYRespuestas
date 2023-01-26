@@ -1,8 +1,26 @@
 <div class="container">
   <div class="card">
     <h4>Resultado</h4>
-    <div class="card-text">
+    <p class="card-text">
       Est es el resultado del cuestionario!
+    </p>
+    <div *ngFor="let pregunta of cuestionario.listPreguntas">
+      <div class="card-header">
+        <b>{{pregunta.descripcion}}</b>
+      </div>
+
+      <ul class="list-group" *ngFor="let respuesta of pregunta.listRespuestas">
+        <li class="list-group-item">
+          {{respuesta.descripcion}}
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col.g-4 offset-lg-4">
+        <button class="btn btn-primary btn-lg btn-block" routerLink="/inicio">
+          Volver
+        </button>
+      </div>
     </div>
   </div>
 </div>
