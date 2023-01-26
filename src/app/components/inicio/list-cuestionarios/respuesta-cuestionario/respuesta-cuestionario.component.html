@@ -4,14 +4,23 @@
     <p class="card-text">
       Est es el resultado del cuestionario!
     </p>
-    <div *ngFor="let pregunta of cuestionario.listPreguntas">
+    <div *ngFor="let pregunta of cuestionario.listPreguntas" style="margin-bottom: 10px;">
       <div class="card-header">
         <b>{{pregunta.descripcion}}</b>
       </div>
 
       <ul class="list-group" *ngFor="let respuesta of pregunta.listRespuestas">
-        <li class="list-group-item">
+        <li class="list-group-item" [ngClass]="{'list-group-item-success':respuesta.esCorrecta ==true,
+                                                'list-group-item-danger':respuesta.esCorrecta ==false}">
           {{respuesta.descripcion}}
+          <!--Respuesta correcta-->
+          <span class="material-symbols-outlined correct" *ngIf="respuesta.esCorrecta == true" >
+            check_circle
+          </span>
+          <!--Respuesta incorrecta-->
+          <span class="material-symbols-outlined incorrect" *ngIf="respuesta.esCorrecta == false" >
+            highlight_off
+          </span>
         </li>
       </ul>
     </div>
