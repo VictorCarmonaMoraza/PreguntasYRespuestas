@@ -27,4 +27,8 @@ export class RespuestaCuestionarioService {
   guardarRespuestaCuestionario(respuestaCuestionario: RespuestaCuestionario): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, respuestaCuestionario);
   }
+
+  getListCuestionarioRespuesta(idCuestionario: number): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + idCuestionario);
+  }
 }

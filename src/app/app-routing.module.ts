@@ -15,6 +15,7 @@ import { ListCuestionariosComponent } from './components/inicio/list-cuestionari
 import { IngresarNombreComponent } from './components/inicio/list-cuestionarios/ingresar-nombre/ingresar-nombre.component';
 import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregunta/pregunta.component';
 import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
+import { EstadisticasComponent } from './components/inicio/dashboard/cuestionarios/estadisticas/estadisticas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -23,10 +24,10 @@ const routes: Routes = [
       { path: '', component: BienvenidaComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      {path:'listCuestionarios', component:ListCuestionariosComponent},
-      {path:'ingresarNombre', component:IngresarNombreComponent},
-      {path:'pregunta', component:PreguntaComponent},
-      {path:'respuestaCuestionario', component:RespuestaCuestionarioComponent},
+      { path: 'listCuestionarios', component: ListCuestionariosComponent },
+      { path: 'ingresarNombre', component: IngresarNombreComponent },
+      { path: 'pregunta', component: PreguntaComponent },
+      { path: 'respuestaCuestionario', component: RespuestaCuestionarioComponent },
     ]
   },
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: 'cambiarPassword', component: CambiarPasswordComponent },
       { path: 'cambiarPassword', component: CambiarPasswordComponent },
       { path: 'verCuestionario/:id', component: CuestionarioComponent },
+      { path: 'estadisticas/:id', component: EstadisticasComponent },
       {
         path: 'nuevoCuestionario', component: NuevoCuestionarioComponent, children: [
           { path: 'pasoUno', component: PasoUnoComponent },
