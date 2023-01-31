@@ -1,6 +1,7 @@
 import { RespuestaCuestionarioService } from './../../../../../services/respuesta-cuestionario.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RespuestaCuestionario } from '../../../../../models/respuestaCuestionario';
 
 @Component({
   selector: 'app-estadisticas',
@@ -10,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class EstadisticasComponent implements OnInit {
 
   idCuestionario: number;
+  loading: boolean = false;
+  listRespuestaCuestionario: RespuestaCuestionario[] = [];
 
   constructor(
     private aRoute: ActivatedRoute,
@@ -23,9 +26,12 @@ export class EstadisticasComponent implements OnInit {
   }
 
   getListCuestionarioService(): void {
+    this.loading = true;
     this.respuestaCuestionarioService.getListCuestionarioRespuesta(this.idCuestionario)
       .subscribe(data => {
-        console.log(data);
+        this.loading = false;
+        this.listRespuestaCuestionario = data;
+        console.log('Prueba de datos', data);
       });
   }
 

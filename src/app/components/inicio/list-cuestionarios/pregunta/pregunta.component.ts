@@ -98,6 +98,7 @@ export class PreguntaComponent implements OnInit {
     const rtaCuestionario: RespuestaCuestionario = {
       cuestionarioId: this.respuestaCuestionarioService.idCuestionario,
       nombreParticipante: this.respuestaCuestionarioService.nombreParticipante,
+      fecha:Date.now().toString(),
       listRtaCuestionarioDetalle: this.listRespuestaDetalle
     };
     this.loading = true;
