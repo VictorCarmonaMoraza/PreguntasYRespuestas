@@ -30,6 +30,7 @@ import { IngresarNombreComponent } from './components/inicio/list-cuestionarios/
 import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregunta/pregunta.component';
 import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
 import { EstadisticasComponent } from './components/inicio/dashboard/cuestionarios/estadisticas/estadisticas.component';
+import { DetalleRespuestaComponent } from './components/inicio/dashboard/cuestionarios/estadisticas/detalle-respuesta/detalle-respuesta.component';
 
 
 
@@ -55,6 +56,7 @@ import { EstadisticasComponent } from './components/inicio/dashboard/cuestionari
     PreguntaComponent,
     RespuestaCuestionarioComponent,
     EstadisticasComponent,
+    DetalleRespuestaComponent,
   ],
   imports: [
     BrowserModule,

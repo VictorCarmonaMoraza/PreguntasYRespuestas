@@ -15,7 +15,7 @@
       <td>{{ cuestionarioRespuesta.fecha | date: 'HH:mm'}}</td>
       <td>
         <div class="float-right">
-          <span class="material-symbols-outlined search-icon">
+          <span class="material-symbols-outlined search-icon" routerLink="/dashboard/detalleRespuesta/{{cuestionarioRespuesta.id}}">
             search
           </span>
           <span class="material-symbols-outlined delete-icon" (click)="eliminarRespuestaCuestionario(cuestionarioRespuesta.id)">
