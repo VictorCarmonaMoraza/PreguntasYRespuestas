@@ -27,9 +27,13 @@ export class DetalleRespuestaComponent implements OnInit {
   }
 
   getListRespuestasCuestionario():void{
+    this.loading = true;
 this.respuestaCuestionarioService.getCuestionarioByIdRespuesta(this.idRespuesta)
 .subscribe(data=>{
   console.log(data);
+  this.cuestionario = data.cuestionario;
+  this.respuestas = data.respuestas;
+  this.loading = false;
 })
   }
 
