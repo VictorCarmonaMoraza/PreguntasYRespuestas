@@ -1,8 +1,9 @@
 import { RespuestaCuestionarioDetalle } from './respuestaCuestionarioDetalle';
 
 export class RespuestaCuestionario {
+  id?: number;
   cuestionarioId: number;
   nombreParticipante;
-  fecha:string;
+  fecha: string;
   listRtaCuestionarioDetalle: RespuestaCuestionarioDetalle[];
 }

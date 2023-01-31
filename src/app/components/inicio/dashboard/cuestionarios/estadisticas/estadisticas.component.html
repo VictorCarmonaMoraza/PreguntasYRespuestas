@@ -1,7 +1,7 @@
 <div class="text-center">
   <app-loading *ngIf="loading"></app-loading>
 </div>
-<table class="table sm table-over" *ngIf="listRespuestaCuestionario.length > 0">
+<table class="table sm table-over" *ngIf="listRespuestaCuestionario.length > 0 && loading == false">
   <thead>
     <th>Participante</th>
     <th>Fecha</th>
@@ -18,7 +18,7 @@
           <span class="material-symbols-outlined search-icon">
             search
           </span>
-          <span class="material-symbols-outlined delete-icon">
+          <span class="material-symbols-outlined delete-icon" (click)="eliminarRespuestaCuestionario(cuestionarioRespuesta.id)">
             delete
           </span>
         </div>
