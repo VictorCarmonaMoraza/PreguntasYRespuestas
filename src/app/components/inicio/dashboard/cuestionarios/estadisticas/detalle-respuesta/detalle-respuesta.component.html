@@ -10,6 +10,18 @@
     <div class="card-header">
       <b>{{pregunta.descripcion}}</b>
     </div>
+    <ul class="list-group" *ngFor="let respuesta of pregunta.listRespuestas">
+      <li class="list-group-item">
+        {{ respuesta.descripcion }}
+        <span class="material-symbols-outlined correct" *ngIf="respuesta.esCorrecta == true">
+          check_circle
+        </span>
+        <span class="material-symbols-outlined incorrect" *ngIf="respuesta.esCorrecta == false">
+          highlight_off
+        </span>
+      </li>
+
+    </ul>
   </div>
   <div class="row" style="margin-bottom: 20px;">
     <div class="col-lg-4 offset-g-4">
