@@ -51,8 +51,12 @@ export class PreguntaComponent implements OnInit {
         this.respuestaCuestionarioService.cuestionario = data;
       });
   }
-
+  public valor: number = 0;
   obtenerPregunta(): string {
+
+    debugger;
+    console.log(this.listPreguntas, '---->', this.valor);
+    this.valor += 1;
     return this.listPreguntas[this.index].descripcion;
   }
   getIndex(): number {
@@ -98,7 +102,7 @@ export class PreguntaComponent implements OnInit {
     const rtaCuestionario: RespuestaCuestionario = {
       cuestionarioId: this.respuestaCuestionarioService.idCuestionario,
       nombreParticipante: this.respuestaCuestionarioService.nombreParticipante,
-      fecha:Date.now().toString(),
+      fecha: Date.now().toString(),
       listRtaCuestionarioDetalle: this.listRespuestaDetalle
     };
     this.loading = true;
