@@ -1,6 +1,6 @@
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +14,8 @@ import { CuestionariosComponent } from './components/inicio/dashboard/cuestionar
 import { NavbarComponent } from './components/inicio/dashboard/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { LoadingComponent } from './shared/loading/loading.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NuevoCuestionarioComponent } from './components/inicio/dashboard/cuestionarios/nuevo-cuestionario/nuevo-cuestionario.component';
-import {FormsModule} from '@angular/forms'
 
 //Interceptors
 import { AddTokenInterceptor } from './helpers/add-token.interceptor';
@@ -45,7 +43,6 @@ import { DetalleRespuestaComponent } from './components/inicio/dashboard/cuestio
     CambiarPasswordComponent,
     CuestionariosComponent,
     NavbarComponent,
-    LoadingComponent,
     NuevoCuestionarioComponent,
     PasoUnoComponent,
     PasoDosComponent,
@@ -61,11 +58,10 @@ import { DetalleRespuestaComponent } from './components/inicio/dashboard/cuestio
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    SharedModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
