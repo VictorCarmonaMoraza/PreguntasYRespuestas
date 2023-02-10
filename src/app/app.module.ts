@@ -45,8 +45,7 @@ import { DashboardModule } from './components/inicio/dashboard/dashboard.module'
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    ListCuestionariosModule,
-    DashboardModule
+  
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
   bootstrap: [AppComponent]

@@ -26,27 +26,14 @@ const routes: Routes = [
       { path: '', component: BienvenidaComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'listCuestionarios', component: ListCuestionariosComponent },
-      { path: 'ingresarNombre', component: IngresarNombreComponent },
-      { path: 'pregunta', component: PreguntaComponent },
-      { path: 'respuestaCuestionario', component: RespuestaCuestionarioComponent },
-    ]
+      {
+        path: 'listCuestionarios', component: ListCuestionariosComponent,
+        loadChildren: () => import('../app/components/inicio/list-cuestionarios/list-cuestionarios/list-cuestionarios.module').then(x => x.ListCuestionariosModule)
+      }]
   },
   {
-    path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard], children: [
-      { path: '', component: CuestionariosComponent },
-      { path: 'cambiarPassword', component: CambiarPasswordComponent },
-      { path: 'cambiarPassword', component: CambiarPasswordComponent },
-      { path: 'verCuestionario/:id', component: CuestionarioComponent },
-      { path: 'estadisticas/:id', component: EstadisticasComponent },
-      { path: 'detalleRespuesta/:id', component: DetalleRespuestaComponent },
-      {
-        path: 'nuevoCuestionario', component: NuevoCuestionarioComponent, children: [
-          { path: 'pasoUno', component: PasoUnoComponent },
-          { path: 'pasoDos', component: PasoDosComponent },
-        ]
-      },
-    ]
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+    loadChildren: () => import('../app/components/inicio/dashboard/dashboard.module').then(x => x.DashboardModule)
   },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' },
 ];
